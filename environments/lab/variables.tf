@@ -6,3 +6,5 @@ variable "region" {}
 
 variable "vcn_cidr" {}
 variable "subnet_cidr" {}
+
+variable "ssh_public_key" {}
