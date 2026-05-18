@@ -6,7 +6,7 @@ data "oci_core_images" "ubuntu_arm" {
   compartment_id           = var.compartment_id
   operating_system         = "Canonical Ubuntu"
   operating_system_version = "22.04"
-  shape                    = "VM.Standard.A1.Flex"
+  shape                    = "VM.Standard.E5.Flex"
   sort_by                  = "TIMECREATED"
   sort_order               = "DESC"
 }
@@ -15,7 +15,7 @@ resource "oci_core_instance" "k8s_master" {
   availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id      = var.compartment_id
   display_name        = "k8s-master"
-  shape               = "VM.Standard.A1.Flex"
+  shape               = "VM.Standard.E5.Flex"
 
   shape_config {
     ocpus         = 2
@@ -42,7 +42,7 @@ resource "oci_core_instance" "k8s_worker" {
   availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id      = var.compartment_id
   display_name        = "k8s-worker-${count.index + 1}"
-  shape               = "VM.Standard.A1.Flex"
+  shape               = "VM.Standard.E5.Flex"
 
   shape_config {
     ocpus         = 1
