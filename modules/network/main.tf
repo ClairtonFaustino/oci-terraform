@@ -65,6 +65,15 @@ resource "oci_core_security_list" "k8s_security_list" {
       max = 80
     }
   }
+
+  ingress_security_rules {
+    source   = "0.0.0.0/0"
+    protocol = "6"
+    tcp_options {
+      min = 30000
+      max = 32767
+    }
+  }
 }
 
 resource "oci_core_subnet" "k8s_public_subnet" {
