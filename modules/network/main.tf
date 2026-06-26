@@ -70,6 +70,15 @@ resource "oci_core_security_list" "k8s_security_list" {
     source   = "0.0.0.0/0"
     protocol = "6"
     tcp_options {
+      min = 443
+      max = 443
+    }
+  }
+
+  ingress_security_rules {
+    source   = "0.0.0.0/0"
+    protocol = "6"
+    tcp_options {
       min = 30000
       max = 32767
     }
